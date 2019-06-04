@@ -110,7 +110,7 @@ public class TelaInformativa extends javax.swing.JFrame {
 
     private void btn_VoltarInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VoltarInfoActionPerformed
         
-        TelaMenuAdm tlm = new TelaMenuAdm();
+        TelaLogin tlm = new TelaLogin();
         tlm.setVisible(true);
         
         dispose();

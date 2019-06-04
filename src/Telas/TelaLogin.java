@@ -62,7 +62,7 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_Entrar);
-        btn_Entrar.setBounds(420, 230, 63, 25);
+        btn_Entrar.setBounds(420, 230, 70, 25);
 
         lbl_Informacoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ExclamaçãoMenor.png"))); // NOI18N
         lbl_Informacoes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,7 +113,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 
                 
             }   else{
-                    JOptionPane.showMessageDialog(null, "Senha incorreta");
+                    JOptionPane.showMessageDialog(null, "Senha e/ou Usuário inválido(s)!");
                 }
         
     }//GEN-LAST:event_btn_EntrarActionPerformed

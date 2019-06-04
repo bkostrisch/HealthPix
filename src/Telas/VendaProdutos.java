@@ -77,7 +77,7 @@ public class VendaProdutos extends javax.swing.JFrame {
                 h.getIdvendas(),
                 h.getVenda(),
                 h.getValorvenda(),
-                h.getVendedor(),                                               
+                h.getVendedor(),
                                                
                                               
             });
@@ -319,6 +319,9 @@ public class VendaProdutos extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tb_NotaFiscal);
+        if (tb_NotaFiscal.getColumnModel().getColumnCount() > 0) {
+            tb_NotaFiscal.getColumnModel().getColumn(3).setHeaderValue("Vendedor");
+        }
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(690, 70, 470, 550);
@@ -327,7 +330,7 @@ public class VendaProdutos extends javax.swing.JFrame {
         getContentPane().add(Fundo);
         Fundo.setBounds(0, -30, 1260, 820);
 
-        setSize(new java.awt.Dimension(1182, 800));
+        setSize(new java.awt.Dimension(1182, 791));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -517,6 +520,7 @@ public class VendaProdutos extends javax.swing.JFrame {
     private void btn_GerarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GerarVendaActionPerformed
        
        JOptionPane.showMessageDialog(null, "Imprimindo Nota!");
+       
         
     }//GEN-LAST:event_btn_GerarVendaActionPerformed
 

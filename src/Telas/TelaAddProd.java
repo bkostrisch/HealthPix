@@ -165,7 +165,7 @@ public class TelaAddProd extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_AddProd);
-        btn_AddProd.setBounds(460, 290, 90, 30);
+        btn_AddProd.setBounds(450, 290, 100, 30);
 
         btn_AlterarProd.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btn_AlterarProd.setText("Alterar");

@@ -1,5 +1,10 @@
 package Telas;
 
+import conexao.ConnectionFactory;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.bean.Historico;
@@ -90,6 +95,7 @@ public class HistoricoVendas extends javax.swing.JFrame {
         btn_VoltarHistorico = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_Historico = new javax.swing.JTable();
+        btn_ApagarHistorico = new javax.swing.JButton();
         Fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -128,7 +134,7 @@ public class HistoricoVendas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_PesqProd);
-        btn_PesqProd.setBounds(450, 70, 80, 30);
+        btn_PesqProd.setBounds(450, 70, 90, 30);
 
         btn_PesqVend.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
         btn_PesqVend.setText("Vendedor");
@@ -138,7 +144,7 @@ public class HistoricoVendas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_PesqVend);
-        btn_PesqVend.setBounds(450, 110, 83, 30);
+        btn_PesqVend.setBounds(450, 110, 90, 30);
 
         btn_VoltarHistorico.setFont(new java.awt.Font("Leelawadee UI", 0, 12)); // NOI18N
         btn_VoltarHistorico.setText("Voltar");
@@ -169,14 +175,24 @@ public class HistoricoVendas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tb_Historico);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 160, 520, 420);
+        jScrollPane1.setBounds(10, 190, 520, 390);
+
+        btn_ApagarHistorico.setFont(new java.awt.Font("Leelawadee UI", 0, 11)); // NOI18N
+        btn_ApagarHistorico.setText("Apagar Histórico");
+        btn_ApagarHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ApagarHistoricoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_ApagarHistorico);
+        btn_ApagarHistorico.setBounds(210, 150, 120, 30);
 
         Fundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Fundo.jpg"))); // NOI18N
         Fundo.setText("jLabel1");
         getContentPane().add(Fundo);
         Fundo.setBounds(0, 0, 640, 680);
 
-        setSize(new java.awt.Dimension(555, 630));
+        setSize(new java.awt.Dimension(562, 630));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,6 +218,29 @@ public class HistoricoVendas extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btn_PesqVendActionPerformed
+
+    private void btn_ApagarHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ApagarHistoricoActionPerformed
+      
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = con.prepareStatement("TRUNCATE TABLE historico");          
+            stmt.executeUpdate();           
+           
+            
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Não foi possível gerar nova nota: "+ex);
+        }finally{
+            ConnectionFactory.closeConnection(con, stmt);
+        }    
+       
+        
+        lerTabela();
+        
+        
+    }//GEN-LAST:event_btn_ApagarHistoricoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,6 +279,7 @@ public class HistoricoVendas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fundo;
+    private javax.swing.JButton btn_ApagarHistorico;
     private javax.swing.JButton btn_PesqProd;
     private javax.swing.JButton btn_PesqVend;
     private javax.swing.JButton btn_VoltarHistorico;
