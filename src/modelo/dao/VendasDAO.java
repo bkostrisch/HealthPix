@@ -21,10 +21,9 @@ public class VendasDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("INSERT INTO vendas(venda, valorvenda, vendedor)VALUES(?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO vendas(venda, valorvenda)VALUES(?,?)");
             stmt.setString(1,h.getVenda());
-            stmt.setDouble(2,h.getValorvenda());
-            stmt.setString(3,h.getVendedor());                   
+            stmt.setDouble(2,h.getValorvenda());                               
             
             
             stmt.executeUpdate();          
@@ -82,8 +81,7 @@ public class VendasDAO {
                 
                 inf.setIdvendas(rs.getInt("idvendas"));    
                 inf.setVenda(rs.getString("venda"));
-                inf.setValorvenda(rs.getDouble("valorvenda"));
-                inf.setVendedor(rs.getString("vendedor"));                         
+                inf.setValorvenda(rs.getDouble("valorvenda"));                                         
                                             
                                 
                 infos.add(inf);
