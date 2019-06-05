@@ -25,7 +25,7 @@ import modelo.dao.HistoricoDAO;
 public class VendaProdutos extends javax.swing.JFrame {
 
     public static boolean condicao;
-    Queue <Integer> hist = new LinkedList <Integer>();
+    
  
     
     public VendaProdutos() {
@@ -76,8 +76,7 @@ public class VendaProdutos extends javax.swing.JFrame {
             vendas.addRow(new Object[]{
                 h.getIdvendas(),
                 h.getVenda(),
-                h.getValorvenda(),
-                h.getVendedor(),
+                h.getValorvenda(),                
                                                
                                               
             });
@@ -114,8 +113,6 @@ public class VendaProdutos extends javax.swing.JFrame {
         lbl_ValorVenda = new javax.swing.JLabel();
         btn_AddVenda = new javax.swing.JButton();
         btn_RemoverVenda = new javax.swing.JButton();
-        lbl_VendedorVenda = new javax.swing.JLabel();
-        txt_VendedorVenda = new javax.swing.JTextField();
         btn_GerarVenda = new javax.swing.JButton();
         btn_NovaVenda = new javax.swing.JButton();
         btn_VoltarVenda = new javax.swing.JButton();
@@ -180,13 +177,6 @@ public class VendaProdutos extends javax.swing.JFrame {
         });
         getContentPane().add(btn_RemoverVenda);
         btn_RemoverVenda.setBounds(580, 420, 100, 29);
-
-        lbl_VendedorVenda.setFont(new java.awt.Font("Leelawadee UI", 0, 16)); // NOI18N
-        lbl_VendedorVenda.setText("Vendedor:");
-        getContentPane().add(lbl_VendedorVenda);
-        lbl_VendedorVenda.setBounds(70, 300, 80, 22);
-        getContentPane().add(txt_VendedorVenda);
-        txt_VendedorVenda.setBounds(160, 300, 190, 30);
 
         btn_GerarVenda.setFont(new java.awt.Font("Leelawadee UI", 0, 14)); // NOI18N
         btn_GerarVenda.setText("Gerar Nota");
@@ -295,18 +285,18 @@ public class VendaProdutos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tb_Venda);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 360, 560, 390);
+        jScrollPane1.setBounds(10, 280, 560, 470);
 
         tb_NotaFiscal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Produto", "Valor", "Vendedor"
+                "ID", "Produto", "Valor"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -319,9 +309,6 @@ public class VendaProdutos extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tb_NotaFiscal);
-        if (tb_NotaFiscal.getColumnModel().getColumnCount() > 0) {
-            tb_NotaFiscal.getColumnModel().getColumn(3).setHeaderValue("Vendedor");
-        }
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(690, 70, 470, 550);
@@ -361,11 +348,10 @@ public class VendaProdutos extends javax.swing.JFrame {
         
        
         h.setVenda(lbl_NomedaVenda.getText());        
-        h.setValorvenda(Double.parseDouble(lbl_ValordaVenda.getText()));               
-        h.setVendedor(txt_VendedorVenda.getText());              
+        h.setValorvenda(Double.parseDouble(lbl_ValordaVenda.getText()));                    
         s.setVendahist(lbl_NomedaVenda.getText());        
         s.setValorhist(lbl_ValordaVenda.getText());               
-        s.setVendedorhist(txt_VendedorVenda.getText());         
+        s.setVendedorhist(TelaLogin.nome);         
         
            
         hdao.cadastrarHistorico(s);       
@@ -374,8 +360,7 @@ public class VendaProdutos extends javax.swing.JFrame {
        
         
         lbl_NomedaVenda.setText("");
-        lbl_ValordaVenda.setText("");
-        txt_VendedorVenda.setText("");     
+        lbl_ValordaVenda.setText("");         
                                
                
         
@@ -439,8 +424,7 @@ public class VendaProdutos extends javax.swing.JFrame {
             hdao.deletarHistorico(s);
         
             lbl_NomedaVenda.setText("");
-            lbl_ValordaVenda.setText("");
-            txt_VendedorVenda.setText("");            
+            lbl_ValordaVenda.setText("");            
             lbl_IDv.setText("");
         
             
@@ -485,8 +469,7 @@ public class VendaProdutos extends javax.swing.JFrame {
     private void btn_ApagarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ApagarVendasActionPerformed
         
             lbl_NomedaVenda.setText("");
-            lbl_ValordaVenda.setText("");
-            txt_VendedorVenda.setText("");            
+            lbl_ValordaVenda.setText("");                       
             lbl_IDv.setText("");
         
             lerTabela();
@@ -604,10 +587,8 @@ public class VendaProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_ValorTotal;
     private javax.swing.JLabel lbl_ValorVenda;
     private javax.swing.JLabel lbl_ValordaVenda;
-    private javax.swing.JLabel lbl_VendedorVenda;
     private javax.swing.JTable tb_NotaFiscal;
     private javax.swing.JTable tb_Venda;
     private javax.swing.JTextField txt_PesquisaVenda;
-    private javax.swing.JTextField txt_VendedorVenda;
     // End of variables declaration//GEN-END:variables
 }
