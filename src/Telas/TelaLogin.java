@@ -6,7 +6,8 @@ import modelo.dao.FuncionarioDAO;
 
 
 public class TelaLogin extends javax.swing.JFrame {
-
+    
+    public static String nome;
        
     public TelaLogin() {
         initComponents();
@@ -98,6 +99,7 @@ public class TelaLogin extends javax.swing.JFrame {
            
                 VendaProdutos.condicao = true;
                 new TelaMenuAdm().setVisible(true);
+                nome = txt_Login.getText();
                 this.dispose();
                 
                 
@@ -107,7 +109,9 @@ public class TelaLogin extends javax.swing.JFrame {
            
                 VendaProdutos.condicao = false;
                 new VendaProdutos().setVisible(true);
+                nome = txt_Login.getText();
                 this.dispose();
+                
                 
                 
                 
